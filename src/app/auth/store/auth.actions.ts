@@ -30,3 +30,7 @@ export const authRegisterErrorAction = createAction(
 export const authRegisterSuccessAction = createAction(
     "[Auth] Register Success"
 );
+
+export const authLogoutAction = createAction(
+    "[Auth] Logout"
+);
