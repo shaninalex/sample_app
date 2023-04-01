@@ -6,20 +6,18 @@ import { LoginPayload, LoginSuccessPayload } from '../auth.types';
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+    constructor(private store: Store<AuthState>) {}
 
-    constructor(
-        private store: Store<AuthState>
-    ) {
+    login() {
         const payload: LoginPayload = {
             email: "test@test.com",
             password: "test"
         }
-
-        this.store.dispatch(authLoginStartAction({payload: payload}));
+        this.store.dispatch(authLoginStartAction({ payload: payload }));
     }
 }

@@ -14,7 +14,7 @@ export class AuthEffects {
         exhaustMap(action =>
             this.authService.login(action.payload).pipe(
                 map(access => AuthActions.authLoginSuccessAction({ payload: <LoginSuccessPayload>access })),
-                catchError(error => of(AuthActions.authLoginErrorAction({ payload: error })))
+                catchError(error => of(AuthActions.authLoginErrorAction({ payload: "Unable to login." })))
             )
         )
     ));
@@ -22,8 +22,9 @@ export class AuthEffects {
     authSuccess$ = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.authLoginSuccessAction),
         tap(result => {
-            localStorage.setItem("access_token", result.payload.token_access);
-            localStorage.setItem("token_refresh", result.payload.token_refresh);
+            localStorage.setItem("access_token", result.payload.access_token);
+            localStorage.setItem("refresh_token", result.payload.refresh_token);
+            localStorage.setItem("exp", String(result.payload.exp));
             this.router.navigate(['/app']);
         })
     ), { dispatch: false});

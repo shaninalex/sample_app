@@ -27,7 +27,7 @@ def login():
 
 
 @app.route("/api/v2/user", methods=["GET"])
-def login():
+def user():
     random_return_waiting()
     with open("./datasource/login.json", 'r') as f:
         data = json.load(f)

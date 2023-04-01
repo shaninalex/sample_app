@@ -5,7 +5,7 @@ import { on } from "@ngrx/store";
 
 export interface AuthState {
     tokens?: LoginSuccessPayload
-    error?: Error
+    error?: string
     loading: boolean
 };
 

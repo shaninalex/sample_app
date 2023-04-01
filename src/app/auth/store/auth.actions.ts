@@ -9,7 +9,7 @@ export const authLoginStartAction = createAction(
 
 export const authLoginErrorAction = createAction(
     "[Auth] Login Error",
-    props<{payload: Error}>()
+    props<{payload: string}>()
 );
 
 export const authLoginSuccessAction = createAction(
